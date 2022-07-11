@@ -14,8 +14,9 @@ class App extends Component {
   render() {
     return (
       <React.Fragment>
+        <h1 class='title'>Todo List</h1>
         <div>
-          <ul>
+          <ul class='task-list'>
             <li>
               <Task task={this.state.taskList[0]} />
             </li>

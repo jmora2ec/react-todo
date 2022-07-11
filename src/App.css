@@ -12,7 +12,7 @@ body {
   color: #4f4f4f;
 }
 
-ul {
+ul [class] {
   list-style: none;
 }
 
@@ -25,17 +25,26 @@ button {
   background-color: transparent;
 }
 
+.title {
+  text-align: center;
+}
+
 .task {
   font-size: 1.6rem;
   display: flex;
   border: 1px solid rgba(3, 69, 131, 0.1);
   border-radius: 30px;
+<<<<<<< HEAD
   min-width: 320px;
   max-width: 100vw;
+=======
+  width: 80%;
+>>>>>>> daa5f3c73d71d0aec7130859041b7fd1adc09d80
   padding-block: 0.5rem;
   padding-inline: 1rem;
   margin-block: 1rem;
   box-shadow: 4px 4px 10px rgba(3, 69, 131, 0.4);
+  margin-inline: auto;
 }
 
 .task__text {
@@ -48,4 +57,7 @@ button {
 }
 
 .task-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
