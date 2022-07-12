@@ -25,6 +25,14 @@ button {
   background-color: transparent;
 }
 
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 40rem;
+  margin: 0 auto;
+}
+
 .title {
   text-align: center;
 }
@@ -34,12 +42,8 @@ button {
   display: flex;
   border: 1px solid rgba(3, 69, 131, 0.1);
   border-radius: 30px;
-<<<<<<< HEAD
   min-width: 320px;
-  max-width: 100vw;
-=======
-  width: 80%;
->>>>>>> daa5f3c73d71d0aec7130859041b7fd1adc09d80
+
   padding-block: 0.5rem;
   padding-inline: 1rem;
   margin-block: 1rem;

@@ -11,15 +11,3 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-
-<<<<<<< HEAD
-#root {
-  display: flex;
-  justify-content: center;
-=======
-.container {
-  padding-inline: 1rem;
-  margin-inline: auto;
-  max-width: 40rem;
->>>>>>> daa5f3c73d71d0aec7130859041b7fd1adc09d80
-}
