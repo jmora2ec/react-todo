@@ -5,18 +5,20 @@ import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import { faTrashCan } from '@fortawesome/free-solid-svg-icons';
 
 class Task extends Component {
-  state = { task: this.props.task };
+  constructor(props) {
+    super(props);
+    this.state = { task: this.props.task };
+    this.onClickCompleted = this.onClickCompleted.bind(this);
+    this.onClickDelete = this.onClickDelete.bind(this);
+  }
   render() {
     return (
       <div className={this.getStateBadge()}>
         <div className='task__text'>{this.props.task.name}</div>
-        <button
-          className='btn-completed'
-          onClick={() => this.onClickCompleted()}
-        >
+        <button className='btn btn-completed' onClick={this.onClickCompleted}>
           <FontAwesomeIcon icon={faCircleCheck} size={'lg'} />
         </button>
-        <button className='btn-deleted' onClick={() => this.onClickDelete()}>
+        <button className='btn btn-deleted' onClick={this.onClickDelete}>
           <FontAwesomeIcon icon={faTrashCan} size={'lg'} />
         </button>
       </div>
@@ -24,13 +26,11 @@ class Task extends Component {
   }
 
   onClickCompleted() {
-    const task = this.state.task;
-    task.completed = !this.state.task.completed;
-    this.setState({ task: task });
+    this.props.completeTask(this.props.task.id);
   }
 
   onClickDelete() {
-    console.log('mark deleted');
+    this.props.deleteTask(this.props.task.id);
   }
 
   getStateBadge() {
