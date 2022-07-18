@@ -19,7 +19,12 @@ class App extends Component {
       task.value = 'New Task';
     }
 
-    tasks.push({ id: nanoid(10), name: task.value, completed: false });
+    tasks.push({
+      id: nanoid(10),
+      name: task.value,
+      completed: false,
+      deleted: false,
+    });
     this.setState({ tasks: tasks });
 
     console.log('adding task...' + task.value);
@@ -29,6 +34,7 @@ class App extends Component {
     console.log('removing task...' + id);
   }
 
+  //todo...mark objec like completed and update UI cross the text
   completeTask(id) {
     const tasks = this.state.tasks;
     const task = tasks.find((item) => item.id === id);
@@ -36,7 +42,9 @@ class App extends Component {
       console.log('task id not found.');
       return;
     }
-    console.log('task completed:' + task.id);
+    task.completed = !task.completed;
+    task.deleted = false;
+    console.log('task completed:' + task.completed);
   }
 
   render() {
