@@ -12,39 +12,53 @@ class App extends Component {
     this.addTask = this.addTask.bind(this);
   }
 
-  addTask() {
-    const tasks = this.state.tasks;
-    const task = document.getElementById('new-task');
-    if (!task.value) {
-      task.value = 'New Task';
-    }
-
-    tasks.push({
-      id: nanoid(10),
-      name: task.value,
-      completed: false,
-      deleted: false,
-    });
-    this.setState({ tasks: tasks });
-
-    console.log('adding task...' + task.value);
-  }
-
-  removeTask(id) {
-    console.log('removing task...' + id);
-  }
-
-  //todo...mark objec like completed and update UI cross the text
-  completeTask(id) {
-    const tasks = this.state.tasks;
-    const task = tasks.find((item) => item.id === id);
-    if (!task) {
-      console.log('task id not found.');
+  addTask(e) {
+    if (e.type === 'keydown' && e.keyCode !== 13) {
       return;
     }
-    task.completed = !task.completed;
-    task.deleted = false;
-    console.log('task completed:' + task.completed);
+
+    const tasks = this.state.tasks;
+    const taskInput = document.getElementById('new-task');
+    if (!taskInput.value) {
+      taskInput.value = 'New Task';
+    }
+
+    tasks.push(this.newTask(taskInput.value));
+
+    this.setState({ tasks: tasks });
+    taskInput.value = '';
+  }
+
+  newTask(desc) {
+    const task = {
+      id: nanoid(10),
+      desc: desc,
+      completed: false,
+      deleted: false,
+    };
+    return task;
+  }
+
+  removeTask(taskDeleted) {
+    const newTasks = this.state.tasks.map((task) => {
+      if (task.id === taskDeleted.id) {
+        return { ...task, deleted: true };
+      }
+      return task;
+    });
+
+    this.setState({ tasks: newTasks });
+  }
+
+  completeTask(taskCompleted) {
+    const newTasks = this.state.tasks.map((task) => {
+      if (task.id === taskCompleted.id) {
+        return { ...task, completed: !task.completed };
+      }
+      return task;
+    });
+
+    this.setState({ tasks: newTasks });
   }
 
   render() {
@@ -66,6 +80,7 @@ class App extends Component {
             name='task'
             id='new-task'
             placeholder='New task...'
+            onKeyDown={this.addTask}
           />
           <button className='btn btn-add' onClick={this.addTask}></button>
         </div>
