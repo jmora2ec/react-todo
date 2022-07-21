@@ -10,6 +10,9 @@ class App extends Component {
       tasks: [],
     };
     this.addTask = this.addTask.bind(this);
+    this.deleteTask = this.deleteTask.bind(this);
+    this.completeTask = this.completeTask.bind(this);
+    this.updateTask = this.updateTask.bind(this);
   }
 
   addTask(e) {
@@ -20,7 +23,7 @@ class App extends Component {
     const tasks = this.state.tasks;
     const taskInput = document.getElementById('new-task');
     if (!taskInput.value) {
-      taskInput.value = 'New Task';
+      taskInput.value = 'New Task ' + (this.state.tasks.length + 1);
     }
 
     tasks.push(this.newTask(taskInput.value));
@@ -39,7 +42,7 @@ class App extends Component {
     return task;
   }
 
-  removeTask(taskDeleted) {
+  deleteTask(taskDeleted) {
     const newTasks = this.state.tasks.map((task) => {
       if (task.id === taskDeleted.id) {
         return { ...task, deleted: true };
@@ -61,19 +64,21 @@ class App extends Component {
     this.setState({ tasks: newTasks });
   }
 
+  updateTask(taskModified, description) {
+    const tasks = this.state.tasks.map((task) => {
+      if (task.id === taskModified.id) {
+        return { ...task, desc: description };
+      }
+      return task;
+    });
+
+    this.setState({ tasks: tasks });
+  }
+
   render() {
     return (
       <React.Fragment>
         <h1 className='title'>Todo List</h1>
-        <ListTask
-          tasks={this.state.tasks}
-          onDeleteTask={(taskId) => {
-            this.removeTask(taskId);
-          }}
-          onCompleteTask={(taskId) => {
-            this.completeTask(taskId);
-          }}
-        />
         <div className='controls'>
           <input
             type='text'
@@ -84,6 +89,12 @@ class App extends Component {
           />
           <button className='btn btn-add' onClick={this.addTask}></button>
         </div>
+        <ListTask
+          tasks={this.state.tasks}
+          onDeleteTask={this.deleteTask}
+          onCompleteTask={this.completeTask}
+          onUpdateTask={this.updateTask}
+        />
       </React.Fragment>
     );
   }

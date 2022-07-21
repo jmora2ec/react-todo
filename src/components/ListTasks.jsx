@@ -12,6 +12,7 @@ class ListTask extends Component {
               task={task}
               deleteTask={this.props.onDeleteTask}
               completeTask={this.props.onCompleteTask}
+              updateTask={this.props.onUpdateTask}
             />
           </li>
         );
