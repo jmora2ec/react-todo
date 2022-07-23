@@ -28,11 +28,9 @@ class App extends Component {
       taskInput.value = 'New Task ' + (this.state.tasks.length + 1);
     }
 
-    tasks.push(this.newTask(taskInput.value));
-
-    this.setState({ tasks: tasks });
+    this.setState({ tasks: [...tasks, this.newTask(taskInput.value)] });
     taskInput.value = '';
-    console.log(JSON.parse(JSON.stringify(this.state.tasks)));
+    //console.log(JSON.parse(JSON.stringify(this.state.tasks)));
   }
 
   newTask(desc) {
@@ -99,7 +97,6 @@ class App extends Component {
           onCompleteTask={this.completeTask}
           handleChangeDesc={this.handleChangeDesc}
         />
-        <Pagination countItems={this.state.tasks.length} pageSize={4} />
       </React.Fragment>
     );
   }
