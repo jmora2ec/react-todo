@@ -7,14 +7,21 @@ class ListTask extends Component {
   render() {
     if (this.props.tasks.length === 0) return;
 
-    const filteredTasks = [];
-    this.props.tasks.forEach((element) => {
-      if (element.deleted) return;
-      filteredTasks.push(element);
+    const filteredTasks = this.props.tasks.filter((task) => {
+      if (this.props.filter === 'all') {
+        return task;
+      }
+
+      if (this.props.filter === 'active' && task.completed === false) {
+        return task;
+      }
+
+      if (this.props.filter === 'deleted' && task.deleted === true) {
+        return task;
+      }
     });
 
     const listTask = filteredTasks.map((task) => {
-      if (task.deleted) return null;
       return (
         <li key={task.id.toString()}>
           <Task
@@ -26,7 +33,6 @@ class ListTask extends Component {
         </li>
       );
     });
-    console.log(listTask);
 
     return (
       <React.Fragment>

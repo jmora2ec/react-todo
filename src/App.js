@@ -78,6 +78,7 @@ class App extends Component {
   }
 
   render() {
+    const filter = 'all';
     return (
       <React.Fragment>
         <h1 className='title'>Todo List</h1>
@@ -93,6 +94,7 @@ class App extends Component {
         </div>
         <ListTask
           tasks={this.state.tasks}
+          filter={filter}
           onDeleteTask={this.deleteTask}
           onCompleteTask={this.completeTask}
           handleChangeDesc={this.handleChangeDesc}
