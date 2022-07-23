@@ -1,73 +1,76 @@
 import React, { Component } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircleCheck as fasCheck } from '@fortawesome/free-solid-svg-icons/faCircleCheck';
-import { faCircleCheck as farCheck } from '@fortawesome/free-regular-svg-icons/faCircleCheck';
-import { faTrash as fasTrash } from '@fortawesome/free-solid-svg-icons';
-import { faTrashCan as fasTrashCan } from '@fortawesome/free-solid-svg-icons';
-import { faTrashCan as farTrashCan } from '@fortawesome/free-regular-svg-icons/faTrashCan';
-import { faPenToSquare as farPen } from '@fortawesome/free-regular-svg-icons/faPenToSquare';
-import { faPenToSquare as fasPen } from '@fortawesome/free-solid-svg-icons/faPenToSquare';
+import {
+  solid,
+  regular,
+  brands,
+} from '@fortawesome/fontawesome-svg-core/import.macro';
 
 class Task extends Component {
   constructor(props) {
     super(props);
 
-    this.onClickCompleted = this.onClickCompleted.bind(this);
-    this.onClickDelete = this.onClickDelete.bind(this);
-    this.onClickEdit = this.onClickEdit.bind(this);
+    this.handleComplete = this.handleComplete.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
+    this.handleEdit = this.handleEdit.bind(this);
     this.handleChange = this.handleChange.bind(this);
-    this.handleUpdate = this.handleUpdate.bind(this);
+    this.onKeyDownHandler = this.onKeyDownHandler.bind(this);
     this.state = {
       disabled: true,
-      iconEdit: farPen,
-      taskDescription: this.props.task.desc,
+      iconEdit: regular('pen-to-square'),
     };
   }
 
   render() {
-    const iconDeleted = this.props.task.deleted ? fasTrashCan : farTrashCan;
-    const iconCompleted = this.props.task.completed ? fasCheck : farCheck;
+    const iconDeleted = this.props.task.deleted
+      ? solid('trash-can')
+      : regular('trash-can');
+    const iconCompleted = this.props.task.completed
+      ? solid('circle-check')
+      : regular('circle-check');
 
     return (
       <div className='task'>
-        <button className='btn btn-completed' onClick={this.onClickCompleted}>
+        <button className='btn btn-completed' onClick={this.handleComplete}>
           <FontAwesomeIcon icon={iconCompleted} size={'lg'} />
         </button>
         <input
           type='text'
           className={this.getStateBadge()}
           disabled={this.state.disabled}
-          value={this.state.taskDescription}
+          value={this.props.task.desc}
           onChange={this.handleChange}
-          onKeyDown={this.handleUpdate}
+          onKeyDown={this.onKeyDownHandler}
         />
 
-        <button className='btn btn-edit' onClick={this.onClickEdit}>
+        <button className='btn btn-edit' onClick={this.handleEdit}>
           <FontAwesomeIcon icon={this.state.iconEdit} size={'lg'} />
         </button>
-        <button className='btn btn-deleted' onClick={this.onClickDelete}>
+        <button className='btn btn-deleted' onClick={this.handleDelete}>
           <FontAwesomeIcon icon={iconDeleted} size={'lg'} />
         </button>
       </div>
     );
   }
 
-  onClickCompleted() {
+  handleComplete() {
     this.props.completeTask(this.props.task);
   }
 
-  onClickDelete() {
+  handleDelete() {
     this.props.deleteTask(this.props.task);
   }
 
-  onClickEdit() {
+  handleEdit() {
     if (this.props.task.completed) {
       return;
     }
     this.setState((state) => {
       return { disabled: !state.disabled };
     });
-    this.state.iconEdit = this.state.disabled ? fasPen : farPen;
+    this.state.iconEdit = this.state.disabled
+      ? solid('pen-to-square')
+      : regular('pen-to-square');
   }
 
   getStateBadge() {
@@ -76,14 +79,13 @@ class Task extends Component {
     return classes;
   }
 
-  handleChange(e) {
-    this.setState({ taskDescription: e.target.value });
+  handleChange(event) {
+    this.props.handleChangeDesc(this.props.task.id, event);
   }
 
-  handleUpdate(event) {
+  onKeyDownHandler(event) {
     if (event.keyCode === 13) {
-      this.onClickEdit();
-      this.props.updateTask(this.props.task, event.target.value);
+      this.handleEdit();
     }
   }
 }

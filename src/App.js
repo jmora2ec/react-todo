@@ -12,7 +12,8 @@ class App extends Component {
     this.addTask = this.addTask.bind(this);
     this.deleteTask = this.deleteTask.bind(this);
     this.completeTask = this.completeTask.bind(this);
-    this.updateTask = this.updateTask.bind(this);
+
+    this.handleChangeDesc = this.handleChangeDesc.bind(this);
   }
 
   addTask(e) {
@@ -30,6 +31,7 @@ class App extends Component {
 
     this.setState({ tasks: tasks });
     taskInput.value = '';
+    console.log(JSON.parse(JSON.stringify(this.state.tasks)));
   }
 
   newTask(desc) {
@@ -64,15 +66,16 @@ class App extends Component {
     this.setState({ tasks: newTasks });
   }
 
-  updateTask(taskModified, description) {
-    const tasks = this.state.tasks.map((task) => {
-      if (task.id === taskModified.id) {
-        return { ...task, desc: description };
+  handleChangeDesc(taskId, event) {
+    const tasks = this.state.tasks.map((item) => {
+      if (item.id === taskId) {
+        item.desc = event.target.value;
+        return item;
       }
-      return task;
+      return item;
     });
 
-    this.setState({ tasks: tasks });
+    this.setState({ tasks });
   }
 
   render() {
@@ -93,7 +96,7 @@ class App extends Component {
           tasks={this.state.tasks}
           onDeleteTask={this.deleteTask}
           onCompleteTask={this.completeTask}
-          onUpdateTask={this.updateTask}
+          handleChangeDesc={this.handleChangeDesc}
         />
       </React.Fragment>
     );
