@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import ListTask from './components/ListTasks';
+import Pagination from './components/Pagination';
 import { nanoid } from 'nanoid';
 
 class App extends Component {
@@ -98,6 +99,7 @@ class App extends Component {
           onCompleteTask={this.completeTask}
           handleChangeDesc={this.handleChangeDesc}
         />
+        <Pagination countItems={this.state.tasks.length} pageSize={4} />
       </React.Fragment>
     );
   }
