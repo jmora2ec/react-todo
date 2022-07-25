@@ -1,0 +1,19 @@
+.list-group {
+    display: flex;
+    border-radius: 8px;
+    height: 100%;
+    justify-content: space-evenly;
+    width: 100%;
+
+}
+
+
+
+.list-group-item {
+    cursor: pointer;
+
+}
+
+.active {
+    font-weight: bold;
+}

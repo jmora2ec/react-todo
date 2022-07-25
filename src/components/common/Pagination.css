@@ -1,0 +1,33 @@
+.pagination {
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    gap: 3px;
+
+}
+
+.page-item {
+    height: 3rem;
+    width: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+}
+
+
+
+.page-link {
+
+    padding: 1rem;
+    font-size: 1.2rem;
+}
+
+.page-item.active {
+    background-color: rgba(3, 69, 131, 0.8);
+    color: white;
+}

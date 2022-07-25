@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './Task.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   solid,
@@ -21,22 +22,59 @@ class Task extends Component {
     };
   }
 
+  handleComplete() {
+    this.props.completeTask(this.props.task);
+  }
+
+  handleDelete() {
+    this.props.deleteTask(this.props.task);
+  }
+
+  handleEdit() {
+    if (this.props.task.completed || this.props.task.deleted) {
+      return;
+    }
+    this.setState((state) => {
+      return { disabled: !state.disabled };
+    });
+    this.state.iconEdit = this.state.disabled
+      ? solid('pen-to-square')
+      : regular('pen-to-square');
+  }
+
+  getStateBadge() {
+    let classes = 'task ';
+    classes += this.props.task.completed ? 'task--completed ' : '';
+    classes += this.props.task.deleted ? 'task--deleted' : '';
+    return classes;
+  }
+
+  handleChange(event) {
+    this.props.handleChangeDesc(this.props.task, event);
+  }
+
+  onKeyDownHandler(event) {
+    if (event.keyCode === 13) {
+      this.handleEdit();
+    }
+  }
+
   render() {
     const iconDeleted = this.props.task.deleted
       ? solid('trash-can')
       : regular('trash-can');
     const iconCompleted = this.props.task.completed
-      ? solid('circle-check')
-      : regular('circle-check');
+      ? regular('circle-check')
+      : regular('circle');
 
     return (
-      <div className='task'>
+      <div className={this.getStateBadge()}>
         <button className='btn btn-completed' onClick={this.handleComplete}>
           <FontAwesomeIcon icon={iconCompleted} size={'lg'} />
         </button>
         <input
           type='text'
-          className={this.getStateBadge()}
+          className='task__desc'
           disabled={this.state.disabled}
           value={this.props.task.desc}
           onChange={this.handleChange}
@@ -51,42 +89,6 @@ class Task extends Component {
         </button>
       </div>
     );
-  }
-
-  handleComplete() {
-    this.props.completeTask(this.props.task);
-  }
-
-  handleDelete() {
-    this.props.deleteTask(this.props.task);
-  }
-
-  handleEdit() {
-    if (this.props.task.completed) {
-      return;
-    }
-    this.setState((state) => {
-      return { disabled: !state.disabled };
-    });
-    this.state.iconEdit = this.state.disabled
-      ? solid('pen-to-square')
-      : regular('pen-to-square');
-  }
-
-  getStateBadge() {
-    let classes = 'task__desc ';
-    classes += this.props.task.completed ? 'task--completed' : '';
-    return classes;
-  }
-
-  handleChange(event) {
-    this.props.handleChangeDesc(this.props.task.id, event);
-  }
-
-  onKeyDownHandler(event) {
-    if (event.keyCode === 13) {
-      this.handleEdit();
-    }
   }
 }
 
