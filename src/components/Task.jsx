@@ -68,7 +68,7 @@ class Task extends Component {
       : regular('circle');
 
     return (
-      <div className={this.getStateBadge()}>
+      <li className={this.getStateBadge()}>
         <button className='btn btn-completed' onClick={this.handleComplete}>
           <FontAwesomeIcon icon={iconCompleted} size={'lg'} />
         </button>
@@ -87,7 +87,7 @@ class Task extends Component {
         <button className='btn btn-deleted' onClick={this.handleDelete}>
           <FontAwesomeIcon icon={iconDeleted} size={'lg'} />
         </button>
-      </div>
+      </li>
     );
   }
 }

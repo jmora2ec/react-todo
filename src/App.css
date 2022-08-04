@@ -74,8 +74,17 @@ input:active {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  width: 80%;
+  width: 100%;
   margin-inline: auto;
+}
+
+.controls input {
+  border-radius: 10px;
+  padding-block: 1rem;
+  padding-inline: 1rem;
+  border: 1px solid rgba(3, 69, 131, 0.1);
+  box-shadow: 2px 2px 8px rgba(3, 69, 131, 0.3);
+
 }
 
 .btn-add {

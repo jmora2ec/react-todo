@@ -5,6 +5,7 @@ import Pagination from './common/Pagination';
 import { nanoid } from 'nanoid';
 import { paginate } from '../utils/paginate';
 import ListGroup from './common/ListGroup';
+import InputTask from './inputTask';
 
 class Todo extends Component {
   constructor() {
@@ -127,19 +128,11 @@ class Todo extends Component {
 
     return (
       <React.Fragment>
-        <div className='controls'>
-          <input
-            type='text'
-            name='task'
-            id='new-task'
-            placeholder='New task...'
-            onKeyDown={this.addTask}
-          />
-          <button className='btn btn-add' onClick={this.addTask}></button>
-        </div>
-        <div className='tasks-counter'>
+        <h1 className='title'>Todo for today!</h1>
+               <div className='tasks-counter'>
           <h2>There are {tasksFiltered.length} tasks in list.</h2>
         </div>
+        <InputTask addTask={this.addTask}/>
 
         <div className='split vertical'>
           <div className='selector'>
@@ -169,5 +162,6 @@ class Todo extends Component {
     );
   }
 }
+
 
 export default Todo;
