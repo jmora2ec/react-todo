@@ -2,15 +2,18 @@
     display: flex;
     border-radius: 8px;
     height: 100%;
-    justify-content: space-evenly;
-    width: 100%;
+    margin-inline: auto;
+    width: fit-content;
+
 
 }
 
 
 
 .list-group-item {
+    padding-bottom: 1em;
     cursor: pointer;
+
 
 }
 

@@ -1,0 +1,41 @@
+.controls {
+    margin-top: 1em;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+    margin-inline: auto;
+}
+
+.controls input {
+    border-radius: 10px;
+    padding-block: 1.2rem;
+    padding-inline: 1rem;
+    border: none;
+    /* border: 1px solid rgba(3, 69, 131, 0.1); */
+    box-shadow: 2px 2px 8px rgba(3, 69, 131, 0.3);
+    background-color: rgba(97, 102, 105, 0.1);
+    font-size: 1.8rem;
+
+}
+
+.btn-add {
+    height: 1rem;
+    width: 1rem;
+    padding: 0.8em;
+    box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.4);
+    border-radius: 5px;
+    font-size: 2rem;
+    font-weight: bold;
+    position: relative;
+}
+
+.btn-add::before {
+    position: absolute;
+    content: '+';
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+}

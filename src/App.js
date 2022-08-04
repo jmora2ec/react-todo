@@ -6,7 +6,9 @@ class App extends Component {
   render() {
     return (
       <React.Fragment>
-        <Todo />
+        <div className='container'>
+          <Todo />
+        </div>
       </React.Fragment>
     );
   }

@@ -8,15 +8,14 @@ export default function ListTask(props) {
     <React.Fragment>
       <ul className='task-list'>
         {tasks.map((task) => (
-          
-            <Task
-key={task.id.toString()}
-              task={task}
-              deleteTask={props.onDeleteTask}
-              completeTask={props.onCompleteTask}
-              handleChangeDesc={props.handleChangeDesc}
-            />
-                  ))}
+          <Task
+            key={task.id.toString()}
+            task={task}
+            deleteTask={props.onDeleteTask}
+            completeTask={props.onCompleteTask}
+            handleChangeDesc={props.handleChangeDesc}
+          />
+        ))}
       </ul>
     </React.Fragment>
   );

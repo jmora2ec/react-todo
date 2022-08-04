@@ -5,14 +5,15 @@ import Pagination from './common/Pagination';
 import { nanoid } from 'nanoid';
 import { paginate } from '../utils/paginate';
 import ListGroup from './common/ListGroup';
-import InputTask from './inputTask';
+import InputTask from './InputTask';
+import Header from './Header';
 
 class Todo extends Component {
   constructor() {
     super();
     this.state = {
       tasks: this.getTasks(),
-      pageSize: 4,
+      pageSize: 5,
       currentPage: 1,
       selectedFilter: 'All',
     };
@@ -128,13 +129,7 @@ class Todo extends Component {
 
     return (
       <React.Fragment>
-        <h1 className='title'>Todo for today!</h1>
-               <div className='tasks-counter'>
-          <h2>There are {tasksFiltered.length} tasks in list.</h2>
-        </div>
-        <InputTask addTask={this.addTask}/>
-
-        <div className='split vertical'>
+        <div className='split'>
           <div className='selector'>
             <ListGroup
               selections={filters}
@@ -142,7 +137,9 @@ class Todo extends Component {
               selectedItem={selectedFilter}
             />
           </div>
-          <div>
+          <div className='content'>
+            <Header count={tasksFiltered.length} />
+            <InputTask addTask={this.addTask} />
             <ListTask
               tasks={tasks}
               filter={selectedFilter}
@@ -162,6 +159,5 @@ class Todo extends Component {
     );
   }
 }
-
 
 export default Todo;

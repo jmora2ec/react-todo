@@ -4,7 +4,7 @@ import './ListGroup.css';
 const ListGroup = (props) => {
   const { selections: items, onItemSelect, selectedItem } = props;
   return (
-    <ul className='list-group'>
+    <ul className='list-group vertical'>
       {items.map((item, index) => (
         <li
           key={index}
