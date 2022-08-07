@@ -10,10 +10,12 @@ const ListGroup = (props) => {
           key={index}
           onClick={() => onItemSelect(item)}
           className={
-            item === selectedItem ? 'list-group-item active' : 'list-group-item'
+            item.filter === selectedItem
+              ? 'list-group-item active'
+              : 'list-group-item'
           }
         >
-          {item}
+          {item.filter} <span class='count'>({item.count})</span>
         </li>
       ))}
     </ul>

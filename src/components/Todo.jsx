@@ -7,6 +7,7 @@ import { paginate } from '../utils/paginate';
 import ListGroup from './common/ListGroup';
 import InputTask from './InputTask';
 import Header from './Header';
+import { filter } from 'lodash';
 
 class Todo extends Component {
   constructor() {
@@ -15,7 +16,7 @@ class Todo extends Component {
       tasks: this.getTasks(),
       pageSize: 5,
       currentPage: 1,
-      selectedFilter: 'All',
+      selectedFilter: 'Active',
     };
     this.addTask = this.addTask.bind(this);
     this.deleteTask = this.deleteTask.bind(this);
@@ -24,6 +25,7 @@ class Todo extends Component {
     this.handlePageChange = this.handlePageChange.bind(this);
     this.handleFilterSelect = this.handleFilterSelect.bind(this);
     this.getFilteredTasks = this.getFilteredTasks.bind(this);
+    this.getFilters = this.getFilters.bind(this);
   }
 
   getTasks() {
@@ -95,7 +97,7 @@ class Todo extends Component {
   }
 
   handleFilterSelect(item) {
-    this.setState({ selectedFilter: item, currentPage: 1 });
+    this.setState({ selectedFilter: item.filter, currentPage: 1 });
   }
 
   getFilteredTasks(filter) {
@@ -116,8 +118,32 @@ class Todo extends Component {
     }
   }
 
+  getFilters(tasks) {
+    const filters = [
+      { filter: 'All', count: 0 },
+      { filter: 'Active', count: 0 },
+      { filter: 'Completed', count: 0 },
+      { filter: 'Deleted', count: 0 },
+    ];
+
+    const countCompleted = tasks.filter((item) => {
+      return item.completed === true;
+    }).length;
+
+    const countDeleted = tasks.filter((item) => {
+      return item.deleted === true;
+    }).length;
+
+    filters[0].count = tasks.length;
+    filters[1].count = tasks.length - countCompleted - countDeleted;
+    filters[2].count = countCompleted;
+    filters[3].count = countDeleted;
+
+    console.log(filters);
+    return filters;
+  }
+
   render() {
-    const filters = ['All', 'Active', 'Completed', 'Deleted'];
     const {
       tasks: allTasks,
       pageSize,
@@ -126,6 +152,7 @@ class Todo extends Component {
     } = this.state;
     const tasksFiltered = this.getFilteredTasks(selectedFilter);
     const tasks = paginate(tasksFiltered, currentPage, pageSize);
+    const filters = this.getFilters(allTasks);
 
     return (
       <React.Fragment>
@@ -138,7 +165,7 @@ class Todo extends Component {
             />
           </div>
           <div className='content'>
-            <Header count={tasksFiltered.length} />
+            <Header count={tasksFiltered.length} filter={selectedFilter} />
             <InputTask addTask={this.addTask} />
             <ListTask
               tasks={tasks}

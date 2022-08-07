@@ -4,7 +4,10 @@ const Header = (props) => {
   return (
     <React.Fragment>
       <div className='tasks-counter'>
-        <h2>There are {props.count} tasks in list.</h2>
+        <h2>
+          There are {props.count} {props.filter === 'All' ? '' : props.filter}{' '}
+          tasks in list.
+        </h2>
       </div>
     </React.Fragment>
   );
