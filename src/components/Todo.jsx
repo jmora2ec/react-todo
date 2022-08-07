@@ -97,7 +97,7 @@ class Todo extends Component {
   }
 
   handleFilterSelect(item) {
-    this.setState({ selectedFilter: item.filter, currentPage: 1 });
+    this.setState({ selectedFilter: item.name, currentPage: 1 });
   }
 
   getFilteredTasks(filter) {
@@ -120,10 +120,10 @@ class Todo extends Component {
 
   getFilters(tasks) {
     const filters = [
-      { filter: 'All', count: 0 },
-      { filter: 'Active', count: 0 },
-      { filter: 'Completed', count: 0 },
-      { filter: 'Deleted', count: 0 },
+      { name: 'All', count: 0 },
+      { name: 'Active', count: 0 },
+      { name: 'Completed', count: 0 },
+      { name: 'Deleted', count: 0 },
     ];
 
     const countCompleted = tasks.filter((item) => {
