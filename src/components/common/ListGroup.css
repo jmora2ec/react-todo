@@ -1,17 +1,15 @@
 .list-group {
-    display: flex;
     border-radius: 8px;
     height: 100%;
-    margin-inline: auto;
-    width: fit-content;
-
-
+    width: max-content;
+    padding-left: 2em;
 }
 
 
 
 .list-group-item {
     padding-bottom: 1em;
+    padding-inline: 5px;
     cursor: pointer;
 
 

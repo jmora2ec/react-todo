@@ -5,8 +5,8 @@ const Header = (props) => {
     <React.Fragment>
       <div className='tasks-counter'>
         <h2>
-          There are {props.count} {props.filter === 'All' ? '' : props.filter}{' '}
-          tasks in list.
+          {props.count} {props.filter === 'All' ? '' : props.filter} tasks in
+          list.
         </h2>
       </div>
     </React.Fragment>

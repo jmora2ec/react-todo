@@ -139,7 +139,6 @@ class Todo extends Component {
     filters[2].count = countCompleted;
     filters[3].count = countDeleted;
 
-    console.log(filters);
     return filters;
   }
 
