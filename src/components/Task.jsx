@@ -64,8 +64,8 @@ class Task extends Component {
       ? solid('trash-can')
       : regular('trash-can');
     const iconCompleted = this.props.task.completed
-      ? regular('circle-check')
-      : regular('circle');
+      ? regular('square-check')
+      : regular('square');
 
     return (
       <li className={this.getStateBadge()}>

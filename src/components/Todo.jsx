@@ -126,18 +126,22 @@ class Todo extends Component {
       { name: 'Deleted', count: 0 },
     ];
 
-    const countCompleted = tasks.filter((item) => {
-      return item.completed === true;
+    const completedTasks = tasks.filter((item) => {
+      return item.completed === true && item.deleted === false;
     }).length;
 
-    const countDeleted = tasks.filter((item) => {
+    const deletedTasks = tasks.filter((item) => {
       return item.deleted === true;
     }).length;
 
+    const activeTasks = tasks.filter((item) =>{
+      return item.completed === false && item.deleted === false
+    }).length;
+
     filters[0].count = tasks.length;
-    filters[1].count = tasks.length - countCompleted - countDeleted;
-    filters[2].count = countCompleted;
-    filters[3].count = countDeleted;
+    filters[1].count = activeTasks;
+    filters[2].count = completedTasks;
+    filters[3].count = deletedTasks;
 
     return filters;
   }
