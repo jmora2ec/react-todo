@@ -58,18 +58,9 @@ input:active {
   box-shadow: 2px 2px 8px rgba(3, 69, 131, 0.2);
   min-height: 50rem;
 
-  /* background: rgb(219, 212, 223);
-  background: -moz-linear-gradient(180deg, rgba(219, 212, 223, 1) 0%, rgba(240, 240, 240, 1) 35%);
-  background: -webkit-linear-gradient(180deg, rgba(219, 212, 223, 1) 0%, rgba(240, 240, 240, 1) 35%);
-  background: linear-gradient(180deg, rgba(219, 212, 223, 1) 0%, rgba(240, 240, 240, 1) 35%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#dbd4df", endColorstr="#f0f0f0", GradientType=1); */
 
-  background: rgb(213, 223, 212);
-  background: -moz-linear-gradient(180deg, rgba(213, 223, 212, 1) 0%, rgba(240, 240, 240, 1) 35%);
-  background: -webkit-linear-gradient(180deg, rgba(213, 223, 212, 1) 0%, rgba(240, 240, 240, 1) 35%);
-  background: linear-gradient(180deg, rgba(213, 223, 212, 1) 0%, rgba(240, 240, 240, 1) 35%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#d5dfd4", endColorstr="#f0f0f0", GradientType=1);
-
+  background: rgb(220, 220, 232);
+  background: linear-gradient(180deg, rgba(220, 220, 232, 1) 4%, rgba(244, 244, 248, 1) 61%);
 }
 
 .title {
