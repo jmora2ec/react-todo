@@ -1,10 +1,10 @@
-# Todo App React App
+# Basic to-do React App
 
 Inspired by Dona.ai to-do list https://dona.ai/
 
 ## Description
 
-To-do list made with react library and create-react-app.
+To-do list app made with react library and create-react-app.
 
 ## Tools and libraries used
 
@@ -21,8 +21,10 @@ To-do list made with react library and create-react-app.
 
 ## Other features
 
+- Pagination
 - Conditional styling
 
-## Screenshot
+## Screenshots
 
-![Screenshot](/public/Screenshot.png)
+![Screenshot active tasks](/public/Screenshot-active.png)
+![Screenshot competed tasks](/public/Screenshot-completed.png)
