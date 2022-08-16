@@ -6,9 +6,10 @@ class App extends Component {
   render() {
     return (
       <React.Fragment>
-        <div className='container'>
-          <Todo />
-        </div>
+        <Todo />
+
+        {/* <div className='container'>
+        </div> */}
       </React.Fragment>
     );
   }

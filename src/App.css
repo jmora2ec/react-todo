@@ -19,7 +19,7 @@ ul [class] {
   list-style: none;
 }
 
-li {}
+
 
 button {
   border: none;
@@ -58,9 +58,27 @@ input:active {
   box-shadow: 2px 2px 8px rgba(3, 69, 131, 0.2);
   min-height: 50rem;
 
+}
 
+.bg-all {
+
+  background: rgb(220, 220, 220);
+  background: linear-gradient(180deg, rgba(220, 220, 220, 1) 4%, rgba(244, 244, 248, 1) 61%);
+}
+
+.bg-active {
+  background: rgb(220, 232, 220);
+  background: linear-gradient(180deg, rgba(220, 232, 220, 1) 4%, rgba(244, 244, 248, 1) 61%);
+}
+
+.bg-completed {
   background: rgb(220, 220, 232);
   background: linear-gradient(180deg, rgba(220, 220, 232, 1) 4%, rgba(244, 244, 248, 1) 61%);
+}
+
+.bg-deleted {
+  background: rgb(240, 220, 220);
+  background: linear-gradient(180deg, rgba(240, 220, 220, 1) 4%, rgba(244, 244, 248, 1) 61%);
 }
 
 .title {

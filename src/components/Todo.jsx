@@ -134,8 +134,8 @@ class Todo extends Component {
       return item.deleted === true;
     }).length;
 
-    const activeTasks = tasks.filter((item) =>{
-      return item.completed === false && item.deleted === false
+    const activeTasks = tasks.filter((item) => {
+      return item.completed === false && item.deleted === false;
     }).length;
 
     filters[0].count = tasks.length;
@@ -144,6 +144,16 @@ class Todo extends Component {
     filters[3].count = deletedTasks;
 
     return filters;
+  }
+
+  getContainerBackgroundColor(filter) {
+    if (filter === 'Active') return 'bg-active';
+
+    if (filter === 'Completed') return 'bg-completed';
+
+    if (filter === 'Deleted') return 'bg-deleted';
+
+    return 'bg-all';
   }
 
   render() {
@@ -158,7 +168,11 @@ class Todo extends Component {
     const filters = this.getFilters(allTasks);
 
     return (
-      <React.Fragment>
+      <div
+        className={
+          'container ' + this.getContainerBackgroundColor(selectedFilter)
+        }
+      >
         <div className='split'>
           <div className='selector'>
             <ListGroup
@@ -185,7 +199,7 @@ class Todo extends Component {
             />
           </div>
         </div>
-      </React.Fragment>
+      </div>
     );
   }
 }
