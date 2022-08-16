@@ -8,8 +8,17 @@ To-do list made with react library and create-react-app.
 
 ## Tools and libraries used
 
-### fontawesome icons
+- fontawesome icons
+- Inter google font
+- nanoid
 
-### Inter google font
+## React features used
 
-### nanoid
+- Class components
+- Function components
+- Stateless function components
+- Controlled components
+
+## Other features
+
+- Conditional styling

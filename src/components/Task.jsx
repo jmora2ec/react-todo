@@ -37,9 +37,11 @@ class Task extends Component {
     this.setState((state) => {
       return { disabled: !state.disabled };
     });
-    this.state.iconEdit = this.state.disabled
-      ? solid('pen-to-square')
-      : regular('pen-to-square');
+    this.setState({
+      iconEdit: this.state.disabled
+        ? solid('pen-to-square')
+        : regular('pen-to-square'),
+    });
   }
 
   getStateBadge() {
