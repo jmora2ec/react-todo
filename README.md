@@ -22,3 +22,7 @@ To-do list made with react library and create-react-app.
 ## Other features
 
 - Conditional styling
+
+## Screenshot
+
+image.png
