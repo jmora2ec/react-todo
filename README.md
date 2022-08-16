@@ -25,4 +25,4 @@ To-do list made with react library and create-react-app.
 
 ## Screenshot
 
-image.png
+![/public/screenshot.png]
