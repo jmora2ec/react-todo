@@ -2,12 +2,14 @@
 
 Inspired by Dona.ai to-do list https://dona.ai/
 
-## Descripion
+## Description
 
 To-do list made with react library and create-react-app.
 
 ## Tools and libraries used
 
--fontawesome icons
--Inter google font
--nanoid
+### fontawesome icons
+
+### Inter google font
+
+### nanoid
