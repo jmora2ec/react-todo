@@ -1,4 +1,5 @@
 {
+  "homepage": "https://jmora2ec.github.io/react-todo/",
   "name": "todo-list",
   "version": "0.1.0",
   "private": true,
@@ -11,6 +12,7 @@
     "@testing-library/react": "^13.1.1",
     "@testing-library/user-event": "^13.5.0",
     "babel-plugin-macros": "^3.1.0",
+    "gh-pages": "^4.0.0",
     "lodash": "^4.17.21",
     "nanoid": "^4.0.0",
     "prop-types": "^15.8.1",
@@ -20,6 +22,8 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -b master -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
