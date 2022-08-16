@@ -7,7 +7,6 @@ import { paginate } from '../utils/paginate';
 import ListGroup from './common/ListGroup';
 import InputTask from './InputTask';
 import Header from './Header';
-import { filter } from 'lodash';
 
 class Todo extends Component {
   constructor() {
